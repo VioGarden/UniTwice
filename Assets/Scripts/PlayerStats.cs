@@ -74,11 +74,12 @@ public class PlayerStats : MonoBehaviour
     private void Update()
     {
 
-        checkIfStatsNeedUpdate();
+        
         // If player is camo, must lower Camo time
         if (camoCheck.isCurrentlyCamo)
         {
             this.camoTime -= Time.deltaTime;
+            StatsManager.Instance.globalCamoTime -= Time.deltaTime;
             if (camoTime < MIN_CAMO_TIMER)
             {
                 Debug.Log("answer");
@@ -88,6 +89,7 @@ public class PlayerStats : MonoBehaviour
         }
         else
         {
+            checkIfStatsNeedUpdate();
             hud.UpdateHealth(camoTime, health, attackDamage, speed, knockBack);
         }
     }

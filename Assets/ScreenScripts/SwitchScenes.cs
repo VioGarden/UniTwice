@@ -11,6 +11,12 @@ public class SwitchScenes : MonoBehaviour
 
     public PlayerStats stats;
 
+    [Header("Loading Screen")]
+    [SerializeField] private GameObject loadingScreen;
+
+    [Header("Slider")]
+    [SerializeField] private Slider loadingSlider;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Collided with door");
@@ -18,8 +24,20 @@ public class SwitchScenes : MonoBehaviour
         {
 
             // Load next scene
-            SceneManager.LoadScene(sceneBuildIndex, LoadSceneMode.Single);
+            loadingScreen.SetActive(true);
+            StartCoroutine(LoadGameAsync(sceneBuildIndex));
 
+        }
+    }
+
+    IEnumerator LoadGameAsync(int sceneToLoad)
+    {
+        AsyncOperation loadOpertation = SceneManager.LoadSceneAsync(sceneToLoad);
+        while (!loadOpertation.isDone)
+        {
+            float progressValue = Mathf.Clamp01(loadOpertation.progress / 0.9f);
+            loadingSlider.value = progressValue;
+            yield return null;
         }
     }
 }
