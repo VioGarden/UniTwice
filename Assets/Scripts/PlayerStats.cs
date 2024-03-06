@@ -39,7 +39,28 @@ public class PlayerStats : MonoBehaviour
 
     private void Start()
     {
-        InitVariables();
+        // GameObject in unity, upon launch, is set to all 0s
+        if (speed == 0)
+        {
+            InitVariables();
+
+            // Runs one time, upon launch, I hope, at least it used to
+            if (!StatsManager.Instance.gameHasStarted)
+            {
+                StatsManager.Instance.globalCamoTime = camoTime;
+                StatsManager.Instance.globalHealth = health;
+                StatsManager.Instance.globalSpeed = speed;
+                StatsManager.Instance.globalAttackDamage = attackDamage;
+                StatsManager.Instance.globalKnockBack = knockBack;
+                StatsManager.Instance.globalIsDead = isDead;
+                StatsManager.Instance.gameHasStarted = true;
+            }
+
+        }
+        else
+        {
+            
+        }
         hud = GetComponent<PlayerHUD>();
         originalColor = playerRenderer.material.color;
         camoFlaretext.gameObject.SetActive(false);
@@ -52,6 +73,8 @@ public class PlayerStats : MonoBehaviour
 
     private void Update()
     {
+
+        checkIfStatsNeedUpdate();
         // If player is camo, must lower Camo time
         if (camoCheck.isCurrentlyCamo)
         {
@@ -78,6 +101,7 @@ public class PlayerStats : MonoBehaviour
         }
         ShowFlare(false, 1, amount);
         this.health -= amount;
+        StatsManager.Instance.globalHealth -= amount;
         if (health <= 0)
         {
             Die();
@@ -115,6 +139,7 @@ public class PlayerStats : MonoBehaviour
         }
         ShowFlare(true, 3, amount);
         this.attackDamage += amount;
+        StatsManager.Instance.globalAttackDamage += amount;
     }
     public void DecreaseAD(int amount)
     {
@@ -125,11 +150,13 @@ public class PlayerStats : MonoBehaviour
         if (attackDamage - amount < 1)
         {
             this.attackDamage = 1;
+            StatsManager.Instance.globalAttackDamage = 1;
         }
         else
         {
             ShowFlare(false, 3, amount);
             this.attackDamage -= amount;
+            StatsManager.Instance.globalAttackDamage -= amount;
         }
     }
 
@@ -142,6 +169,7 @@ public class PlayerStats : MonoBehaviour
         }
         ShowFlare(true, 2, amount);
         this.speed += amount;
+        StatsManager.Instance.globalSpeed += amount;
     }
     public void DecreaseSpeed(int amount)
     {
@@ -152,11 +180,13 @@ public class PlayerStats : MonoBehaviour
         if (speed - amount < 5)
         {
             this.speed = 5;
+            StatsManager.Instance.globalSpeed = 5;
         }
         else
         {
             ShowFlare(false, 2, amount);
             this.speed -= amount;
+            StatsManager.Instance.globalSpeed -= amount;
         }
     }
 
@@ -169,6 +199,7 @@ public class PlayerStats : MonoBehaviour
         }
         ShowFlareFloat(true, 5, amount);
         this.knockBack += amount;
+        StatsManager.Instance.globalKnockBack += amount;
     }
     public void DecreaseKnockBack(float amount)
     {
@@ -182,6 +213,7 @@ public class PlayerStats : MonoBehaviour
         }
         ShowFlareFloat(false, 5, amount);
         this.knockBack -= amount;
+        StatsManager.Instance.globalKnockBack -= amount;
     }
 
     // Camo Functions
@@ -193,6 +225,7 @@ public class PlayerStats : MonoBehaviour
         }
         ShowFlareFloat(true, 4, amount);
         this.camoTime += amount;
+        StatsManager.Instance.globalCamoTime += amount;
     }
     public void DecreaseCamo(float amount)
     {
@@ -203,9 +236,11 @@ public class PlayerStats : MonoBehaviour
         if (camoTime - amount < 0)
         {
             this.camoTime = 0;
+            StatsManager.Instance.globalCamoTime = 0;
         }
         ShowFlareFloat(false, 4, amount);
         this.camoTime -= amount;
+        StatsManager.Instance.globalCamoTime -= amount;
     }
 
     // Flare for stats that are of 'int' type
@@ -357,7 +392,7 @@ public class PlayerStats : MonoBehaviour
         this.camoTime = 10.00f;
         //this.canCamo = true;
         this.health = 30;
-        this.speed = 10;
+        this.speed = 40;
         this.attackDamage = 1;
         this.knockBack = 1f;
         this.isDead = false;
@@ -370,5 +405,29 @@ public class PlayerStats : MonoBehaviour
         Debug.Log("Perished");
         isDead = true;
         Destroy(gameObject);
+    }
+
+    private void checkIfStatsNeedUpdate()
+    {
+        if ((this.camoTime != StatsManager.Instance.globalCamoTime) ||
+        (this.health != StatsManager.Instance.globalHealth) ||
+        (this.speed != StatsManager.Instance.globalSpeed) ||
+        (this.attackDamage != StatsManager.Instance.globalAttackDamage) ||
+        (this.knockBack != StatsManager.Instance.globalKnockBack) ||
+        (this.isDead != StatsManager.Instance.globalIsDead))
+        {
+            ChangeOnSceneSwitch();
+        }
+    }
+
+    private void ChangeOnSceneSwitch()
+    {
+        Debug.Log("ChangeOnSceneSwitch");
+        this.camoTime = StatsManager.Instance.globalCamoTime;
+        this.health = StatsManager.Instance.globalHealth;
+        this.speed = StatsManager.Instance.globalSpeed;
+        this.attackDamage = StatsManager.Instance.globalAttackDamage;
+        this.knockBack = StatsManager.Instance.globalKnockBack;
+        this.isDead = StatsManager.Instance.globalIsDead;
     }
 }
