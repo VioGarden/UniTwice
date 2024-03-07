@@ -32,6 +32,12 @@ public class QuizManager : MonoBehaviour
 
     public Quiz quizVariables;
 
+    public bool isAndOneQuizVersion = false; // Choosing if quiz is one that repeats or quiz loot box
+
+    public bool AndOneBool = false; // If loot box quiz, want to send msg later on
+
+    public bool canSwitchToNormalNPCNow = false;
+
     private void Awake()
     {
         if (Instance == null)
@@ -43,6 +49,8 @@ public class QuizManager : MonoBehaviour
     public void StartQuiz(Quiz quiz)
     {
         isQuizActive = true;
+
+        isAndOneQuizVersion = quiz.isAndOne; // check is coupled npc
 
         OptA.text = quiz.options.optionA;
 
@@ -87,54 +95,114 @@ public class QuizManager : MonoBehaviour
 
     public void OptionAChosen()
     {
-        if (OptA.text == CorrectOpt.text)
+        if (!isAndOneQuizVersion)
         {
-            ChooseBuff();
+            if (OptA.text == CorrectOpt.text)
+            {
+                ChooseBuff();
+            }
+            else
+            {
+                ChooseDeBuff();
+            }
+            EndQuiz();
         }
         else
         {
-            ChooseDeBuff();
+            if (OptA.text == CorrectOpt.text)
+            {
+                ChooseBuffAndOne();
+            }
+            else
+            {
+                ChooseDeBuffAndOne();
+            }
+            EndQuiz();
         }
-        EndQuiz();
     }
 
     public void OptionBChosen()
     {
-        if (OptB.text == CorrectOpt.text)
+        if (!isAndOneQuizVersion)
         {
-            ChooseBuff();
+            if (OptB.text == CorrectOpt.text)
+            {
+                ChooseBuff();
+            }
+            else
+            {
+                ChooseDeBuff();
+            }
+            EndQuiz();
         }
         else
         {
-            ChooseDeBuff();
+            if (OptB.text == CorrectOpt.text)
+            {
+                ChooseBuffAndOne();
+            }
+            else
+            {
+                ChooseDeBuffAndOne();
+            }
+            EndQuiz();
         }
-        EndQuiz();
     }
 
     public void OptionCChosen()
     {
-        if (OptC.text == CorrectOpt.text)
+        if (!isAndOneQuizVersion)
         {
-            ChooseBuff();
+            if (OptC.text == CorrectOpt.text)
+            {
+                ChooseBuff();
+            }
+            else
+            {
+                ChooseDeBuff();
+            }
+            EndQuiz();
         }
         else
         {
-            ChooseDeBuff();
+            if (OptC.text == CorrectOpt.text)
+            {
+                ChooseBuffAndOne();
+            }
+            else
+            {
+                ChooseDeBuffAndOne();
+            }
+            EndQuiz();
         }
-        EndQuiz();
     }
 
     public void OptionDChosen()
     {
-        if (OptD.text == CorrectOpt.text)
+        if (!isAndOneQuizVersion)
         {
-            ChooseBuff();
+            if (OptD.text == CorrectOpt.text)
+            {
+                ChooseBuff();
+            }
+            else
+            {
+                ChooseDeBuff();
+            }
+            EndQuiz();
         }
         else
         {
-            ChooseDeBuff();
+            if (OptD.text == CorrectOpt.text)
+            {
+                ChooseBuffAndOne();
+            }
+            else
+            {
+                ChooseDeBuffAndOne();
+            }
+            EndQuiz();
         }
-        EndQuiz();
     }
 
 
@@ -193,6 +261,71 @@ public class QuizManager : MonoBehaviour
         float randomCamo = Random.Range(0.5f, 30.5f);
         stats.IncreaseCamo(randomCamo);
     }
+
+
+
+
+
+    private void ChooseBuffAndOne()
+    {
+        int randomNumber = Random.Range(1, 6);
+
+        canSwitchToNormalNPCNow = true;
+
+        // Execute the corresponding function based on the selected number
+        switch (randomNumber)
+        {
+            case 1:
+                IncreaseADRandomAndOne();
+                break;
+            case 2:
+                IncreaseHealthRandomAndOne();
+                break;
+            case 3:
+                IncreaseSpeedRandomAndOne();
+                break;
+            case 4:
+                IncreaseKnockBackRandomAndOne();
+                break;
+            case 5:
+                IncreaseCamoRandomAndOne();
+                break;
+        }
+
+    }
+
+    private void IncreaseADRandomAndOne()
+    {
+        int randomAD = Random.Range(7, 7);
+        stats.IncreaseAD(randomAD);
+    }
+
+    private void IncreaseHealthRandomAndOne()
+    {
+        int randomHealth = Random.Range(7, 7);
+        stats.Heal(randomHealth);
+    }
+
+    private void IncreaseSpeedRandomAndOne()
+    {
+        int randomSpeed = Random.Range(7, 7);
+        stats.IncreaseSpeed(randomSpeed);
+    }
+
+    private void IncreaseKnockBackRandomAndOne()
+    {
+        float randomKO = Random.Range(7f, 7f);
+        stats.IncreaseKnockBack(randomKO);
+    }
+
+    private void IncreaseCamoRandomAndOne()
+    {
+        float randomCamo = Random.Range(7f, 7f);
+        stats.IncreaseCamo(randomCamo);
+    }
+
+
+
 
 
     // we don't want to debuff if a stat is already at its floor
@@ -283,6 +416,69 @@ public class QuizManager : MonoBehaviour
         float randomCamo = Random.Range(0.5f, 7.5f);
         stats.DecreaseCamo(randomCamo);
     }
+
+
+
+    public void ChooseDeBuffAndOne()
+    {
+        List<int> debuffableStats = deBuffableStats();
+        int randomNumber = Random.Range(0, debuffableStats.Count);
+        int selectedDebuff = debuffableStats[randomNumber];
+
+        // Execute the corresponding function based on the selected number
+        switch (selectedDebuff)
+        {
+            case 1:
+                DecreaseADRandomAndOne();
+                break;
+            case 2:
+                DecreaseHealthRandomAndOne();
+                break;
+            case 3:
+                DecreaseSpeedRandomAndOne();
+                break;
+            case 4:
+                DecreaseKnockBackRandomAndOne();
+                break;
+            case 5:
+                DecreaseCamoRandomAndOne();
+                break;
+        }
+
+    }
+
+    private void DecreaseADRandomAndOne()
+    {
+        int randomAD = Random.Range(7, 7);
+        stats.DecreaseAD(randomAD);
+    }
+
+    private void DecreaseHealthRandomAndOne()
+    {
+        int randomHealth = Random.Range(7, 7);
+        stats.Damage(randomHealth);
+    }
+
+    private void DecreaseSpeedRandomAndOne()
+    {
+        int randomSpeed = Random.Range(7, 7);
+        stats.DecreaseSpeed(randomSpeed);
+    }
+
+    private void DecreaseKnockBackRandomAndOne()
+    {
+        float randomKO = Random.Range(7f, 7f);
+        stats.DecreaseKnockBack(randomKO);
+    }
+
+    private void DecreaseCamoRandomAndOne()
+    {
+        float randomCamo = Random.Range(7f, 7f);
+        stats.DecreaseCamo(randomCamo);
+    }
+
+
+
 
     IEnumerator TypeSentence(QuizLine quizLine)
     {

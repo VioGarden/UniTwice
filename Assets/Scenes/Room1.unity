@@ -620,7 +620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneBuildIndex: 1
-  stats: {fileID: 0}
+  stats: {fileID: 1206403152}
   loadingScreen: {fileID: 2089836169}
   loadingSlider: {fileID: 1875615536}
 --- !u!61 &1108635968

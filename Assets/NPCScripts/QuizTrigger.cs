@@ -22,6 +22,7 @@ public class Quiz
 {
     public List<QuizLine> quizLines = new List<QuizLine>();
     public QuizOptions options;
+    public bool isAndOne;
 }
 
 [System.Serializable]

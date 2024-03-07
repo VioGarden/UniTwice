@@ -25,6 +25,8 @@ public class DialogueManager : MonoBehaviour
 
     public PlayerStats stats;
 
+    public bool isAndOneDialogueVersion = false;
+
     private void Awake()
     {
         if (Instance == null)
@@ -35,7 +37,15 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
-        ChooseBuff(); // player stat boost upon dialogue
+        isAndOneDialogueVersion = dialogue.isAndOne;
+
+        if (isAndOneDialogueVersion)
+        {
+            ChooseBuffAndOne();
+        } else
+        {
+            ChooseBuff(); // player stat boost upon dialoguez
+        }
 
         isDialogueActive = true;
 
@@ -77,7 +87,7 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void ChooseBuff()
+    private void ChooseBuff()
     {
         int randomNumber = Random.Range(1, 6);
 
@@ -132,6 +142,65 @@ public class DialogueManager : MonoBehaviour
         float randomCamo = Random.Range(0.25f, 50.0f);
         stats.IncreaseCamo(randomCamo);
     }
+
+
+    private void ChooseBuffAndOne()
+    {
+        int randomNumber = Random.Range(1, 6);
+
+        // Execute the corresponding function based on the selected number
+        switch (randomNumber)
+        {
+            case 1:
+                IncreaseADRandomAndOne();
+                break;
+            case 2:
+                IncreaseHealthRandomAndOne();
+                break;
+            case 3:
+                IncreaseSpeedRandomAndOne();
+                break;
+            case 4:
+                IncreaseKnockBackRandomAndOne();
+                break;
+            case 5:
+                IncreaseCamoRandomAndOne();
+                break;
+        }
+    }
+
+
+    private void IncreaseADRandomAndOne()
+    {
+        int randomAD = Random.Range(1, 1);
+        stats.IncreaseAD(randomAD);
+    }
+
+    private void IncreaseHealthRandomAndOne()
+    {
+        int randomHealth = Random.Range(1, 1);
+        stats.Heal(randomHealth);
+    }
+
+    private void IncreaseSpeedRandomAndOne()
+    {
+        int randomSpeed = Random.Range(1, 1);
+        stats.IncreaseSpeed(randomSpeed);
+    }
+
+    private void IncreaseKnockBackRandomAndOne()
+    {
+        float randomKO = Random.Range(1f, 1f);
+        stats.IncreaseKnockBack(randomKO);
+    }
+
+    private void IncreaseCamoRandomAndOne()
+    {
+        float randomCamo = Random.Range(1f, 1f);
+        stats.IncreaseCamo(randomCamo);
+    }
+
+
 
     public void EndDialogue()
     {
