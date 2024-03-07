@@ -239,10 +239,15 @@ public class PlayerStats : MonoBehaviour
         {
             this.camoTime = 0;
             StatsManager.Instance.globalCamoTime = 0;
+            ShowFlareFloat(false, 4, camoTime-amount);
         }
-        ShowFlareFloat(false, 4, amount);
-        this.camoTime -= amount;
-        StatsManager.Instance.globalCamoTime -= amount;
+        else
+        {
+            this.camoTime -= amount;
+            StatsManager.Instance.globalCamoTime -= amount;
+            ShowFlareFloat(false, 4, amount);
+        }
+        
     }
 
     // Flare for stats that are of 'int' type

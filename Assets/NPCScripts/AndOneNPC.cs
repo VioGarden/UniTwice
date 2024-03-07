@@ -2,12 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AndOneNPC : MonoBehaviour
+[System.Serializable]
+public class AndOneNPCState
 {
-    public GameObject QuestionBox;
-    public GameObject AfterMathNPC;
     public bool conditionMet = false;
     public bool currentState;
+}
+
+public class AndOneNPC : MonoBehaviour
+{
+
+    public GameObject QuestionBox;
+    public GameObject AfterMathNPC;
+
+    public AndOneNPCState AONPCstate;
+
+    //public bool conditionMet = false;
+    //public bool currentState;
 
     void Start()
     {
@@ -17,10 +28,10 @@ public class AndOneNPC : MonoBehaviour
 
     void Update()
     {
-        if (!conditionMet)
+        if (!AONPCstate.conditionMet)
         {
-            currentState = QuizManager.Instance.canSwitchToNormalNPCNow;
-            if (currentState)
+            AONPCstate.currentState = QuizManager.Instance.canSwitchToNormalNPCNow;
+            if (AONPCstate.currentState)
             {
                 CorrectAnswerNowShow();
             }

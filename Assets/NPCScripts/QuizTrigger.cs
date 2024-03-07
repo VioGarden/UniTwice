@@ -47,7 +47,11 @@ public class QuizTrigger : MonoBehaviour
 
     public void TriggerQuiz()
     {
+        QuizManager.Instance.currentQuizName = gameObject.name;
+        //Debug.Log("test1");
+        //Debug.Log(gameObject.name);
         QuizManager.Instance.StartQuiz(quiz);
+
     }
 
     public void ExitQuiz()

@@ -38,6 +38,10 @@ public class QuizManager : MonoBehaviour
 
     public bool canSwitchToNormalNPCNow = false;
 
+    public string currentQuizName;
+
+    public AndOneInstanceEsk andOneNPCReference;
+
     private void Awake()
     {
         if (Instance == null)
@@ -48,6 +52,8 @@ public class QuizManager : MonoBehaviour
 
     public void StartQuiz(Quiz quiz)
     {
+        //Debug.Log("test2");
+        //Debug.Log(currentQuizName);
         isQuizActive = true;
 
         isAndOneQuizVersion = quiz.isAndOne; // check is coupled npc
@@ -270,7 +276,9 @@ public class QuizManager : MonoBehaviour
     {
         int randomNumber = Random.Range(1, 6);
 
-        canSwitchToNormalNPCNow = true;
+        //canSwitchToNormalNPCNow = true;
+
+        andOneNPCReference.QuizSolved(currentQuizName);
 
         // Execute the corresponding function based on the selected number
         switch (randomNumber)
