@@ -239,7 +239,7 @@ public class PlayerStats : MonoBehaviour
         {
             this.camoTime = 0;
             StatsManager.Instance.globalCamoTime = 0;
-            ShowFlareFloat(false, 4, camoTime-amount);
+            ShowFlareFloat(false, 4, camoTime - amount);
         }
         else
         {
