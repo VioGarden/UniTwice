@@ -8,6 +8,7 @@ public class MonsterStats : MonoBehaviour
     [SerializeField] public int monsterHealth;
     [SerializeField] public int monsterAttackDamage;
     [SerializeField] public int monsterSpeed;
+    [SerializeField] public int monsterType;
 
     public PlayerStats stats;
 
@@ -21,7 +22,18 @@ public class MonsterStats : MonoBehaviour
 
     void Start()
     {
-        InitVariables();
+        if (monsterType == 0)
+        {
+            InitVariables1();
+        }
+        else if (monsterType == 1)
+        {
+            InitVariables2();
+        }
+        else
+        {
+            InitVariables0();
+        }
         originalColor = monsterRenderer.material.color;
     }
 
@@ -113,13 +125,25 @@ public class MonsterStats : MonoBehaviour
         stats.IncreaseCamo(randomCamo);
     }
 
+    public void InitVariables0()
+    {
+        this.monsterHealth = 1;
+        this.monsterAttackDamage = 1;
+        this.monsterSpeed = 1;
+    }
 
-
-    public void InitVariables()
+    public void InitVariables1()
     {
         this.monsterHealth = 50;
         this.monsterAttackDamage = 2;
         this.monsterSpeed = 3;
+    }
+
+    public void InitVariables2()
+    {
+        this.monsterHealth = 80;
+        this.monsterAttackDamage = 3;
+        this.monsterSpeed = 4;
     }
 
 

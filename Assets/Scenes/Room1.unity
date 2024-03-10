@@ -237,7 +237,7 @@ MonoBehaviour:
     - character:
         name: QuizBox
         icon: {fileID: 21300000, guid: c6fe340dfddbb41dd961b18eae77d8b1, type: 3}
-      line: Tzuyu Quiz Here
+      line: Maknae
       options:
         optionA: 
         optionB: 
@@ -245,11 +245,11 @@ MonoBehaviour:
         optionD: 
         correctOption: 
     options:
-      optionA: pass
-      optionB: pass
-      optionC: pass
-      optionD: pass
-      correctOption: pass
+      optionA: Jeongyoung
+      optionB: Dahyun
+      optionC: Nayeon
+      optionD: Tzuyu
+      correctOption: Tzuyu
     isAndOne: 1
   qhsp: {fileID: 413006833}
 --- !u!212 &44474257
@@ -440,7 +440,7 @@ MonoBehaviour:
     - character:
         name: QuizBox
         icon: {fileID: 21300000, guid: c6fe340dfddbb41dd961b18eae77d8b1, type: 3}
-      line: Momo Quiz Here
+      line: Best Dancer in Twice
       options:
         optionA: 
         optionB: 
@@ -448,11 +448,11 @@ MonoBehaviour:
         optionD: 
         correctOption: 
     options:
-      optionA: pass
-      optionB: pass
-      optionC: pass
-      optionD: pass
-      correctOption: pass
+      optionA: Jihyo
+      optionB: Momo
+      optionC: Nayeon
+      optionD: Dahyun
+      correctOption: Momo
     isAndOne: 1
   qhsp: {fileID: 413006833}
 --- !u!212 &77362470
@@ -1138,7 +1138,7 @@ MonoBehaviour:
     - character:
         name: QuizBox
         icon: {fileID: 21300000, guid: c6fe340dfddbb41dd961b18eae77d8b1, type: 3}
-      line: Dahyun Quiz Here
+      line: 'Nickname : Dubu'
       options:
         optionA: 
         optionB: 
@@ -1146,11 +1146,11 @@ MonoBehaviour:
         optionD: 
         correctOption: 
     options:
-      optionA: pass
-      optionB: pass
-      optionC: pass
-      optionD: pass
-      correctOption: pass
+      optionA: Tzuyu
+      optionB: Mina
+      optionC: Nayeon
+      optionD: Dahyun
+      correctOption: Dahyun
     isAndOne: 1
   qhsp: {fileID: 413006833}
 --- !u!212 &425126239
@@ -1886,7 +1886,7 @@ MonoBehaviour:
     - character:
         name: QuizBox
         icon: {fileID: 21300000, guid: c6fe340dfddbb41dd961b18eae77d8b1, type: 3}
-      line: 'Chaeyoung Quiz Here
+      line: 'Has a couple of Tats
 
 '
       options:
@@ -1896,11 +1896,11 @@ MonoBehaviour:
         optionD: 
         correctOption: 
     options:
-      optionA: pass
-      optionB: pass
-      optionC: pass
-      optionD: pass
-      correctOption: pass
+      optionA: Jeongyoung
+      optionB: Mina
+      optionC: Chaeyoung
+      optionD: Dahyun
+      correctOption: Chaeyoung
     isAndOne: 1
   qhsp: {fileID: 413006833}
 --- !u!212 &713808636
@@ -2069,7 +2069,7 @@ MonoBehaviour:
     - character:
         name: QuizBox
         icon: {fileID: 21300000, guid: c6fe340dfddbb41dd961b18eae77d8b1, type: 3}
-      line: Jihyo Quiz Here
+      line: Leader of Twice
       options:
         optionA: 
         optionB: 
@@ -2077,11 +2077,11 @@ MonoBehaviour:
         optionD: 
         correctOption: 
     options:
-      optionA: pass
-      optionB: pass
-      optionC: pass
-      optionD: pass
-      correctOption: pass
+      optionA: Jihyo
+      optionB: Sana
+      optionC: Mina
+      optionD: Nayeon
+      correctOption: Jihyo
     isAndOne: 1
   qhsp: {fileID: 413006833}
 --- !u!212 &756516612
@@ -2577,7 +2577,7 @@ MonoBehaviour:
     - character:
         name: QuizBox
         icon: {fileID: 21300000, guid: c6fe340dfddbb41dd961b18eae77d8b1, type: 3}
-      line: Jeongyoung Quiz Here
+      line: Could have been a baker if not for Twice
       options:
         optionA: 
         optionB: 
@@ -2585,11 +2585,11 @@ MonoBehaviour:
         optionD: 
         correctOption: 
     options:
-      optionA: pass
-      optionB: pass
-      optionC: pass
-      optionD: pass
-      correctOption: pass
+      optionA: Jeongyoung
+      optionB: Jihyo
+      optionC: Tzuyu
+      optionD: Momo
+      correctOption: Jeongyoung
     isAndOne: 1
   qhsp: {fileID: 413006833}
 --- !u!212 &1146282565
@@ -3478,7 +3478,7 @@ MonoBehaviour:
     - character:
         name: QuizBox
         icon: {fileID: 21300000, guid: c6fe340dfddbb41dd961b18eae77d8b1, type: 3}
-      line: Sana Quiz Here
+      line: Cheese Kimbap
       options:
         optionA: 
         optionB: 
@@ -3486,11 +3486,11 @@ MonoBehaviour:
         optionD: 
         correctOption: 
     options:
-      optionA: pass
-      optionB: pass
-      optionC: pass
-      optionD: pass
-      correctOption: pass
+      optionA: Chaeyoung
+      optionB: Jeongyoung
+      optionC: Momo
+      optionD: Sana
+      correctOption: Sana
     isAndOne: 1
   qhsp: {fileID: 413006833}
 --- !u!212 &1593619710
@@ -3648,7 +3648,7 @@ MonoBehaviour:
     - character:
         name: QuizBox
         icon: {fileID: 21300000, guid: c6fe340dfddbb41dd961b18eae77d8b1, type: 3}
-      line: Mina Quiz here
+      line: Actual gamer, plays Apex, Minecraft, and others
       options:
         optionA: 
         optionB: 
@@ -3656,11 +3656,11 @@ MonoBehaviour:
         optionD: 
         correctOption: 
     options:
-      optionA: pass
-      optionB: pass
-      optionC: pass
-      optionD: pass
-      correctOption: pass
+      optionA: Mina
+      optionB: Tzuyu
+      optionC: Sana
+      optionD: Dahyun
+      correctOption: Mina
     isAndOne: 1
   qhsp: {fileID: 413006833}
 --- !u!212 &1631350185
@@ -4202,7 +4202,7 @@ MonoBehaviour:
     - character:
         name: QuizBox
         icon: {fileID: 21300000, guid: c6fe340dfddbb41dd961b18eae77d8b1, type: 3}
-      line: Nayeon Quiz Here
+      line: Frightened by fireworks
       options:
         optionA: 
         optionB: 
@@ -4210,11 +4210,11 @@ MonoBehaviour:
         optionD: 
         correctOption: 
     options:
-      optionA: pass
-      optionB: pass
-      optionC: pass
-      optionD: pass
-      correctOption: pass
+      optionA: Chaeyoung
+      optionB: Tzuyu
+      optionC: Nayeon
+      optionD: Jeongyoung
+      correctOption: Nayeon
     isAndOne: 1
   qhsp: {fileID: 413006833}
 --- !u!212 &1940234497
