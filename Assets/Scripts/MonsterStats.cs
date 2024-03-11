@@ -6,9 +6,12 @@ public class MonsterStats : MonoBehaviour
 {
 
     [SerializeField] public int monsterHealth;
+    [SerializeField] public int monsterMaxHealth;
     [SerializeField] public int monsterAttackDamage;
     [SerializeField] public int monsterSpeed;
     [SerializeField] public int monsterType;
+
+    [SerializeField] floatingHealthBar healthBar;
 
     public PlayerStats stats;
 
@@ -17,8 +20,12 @@ public class MonsterStats : MonoBehaviour
     // When damaged, flash red
     public Color damageColor = new Color(253f, 100f, 99f);
     public float damageDuration = 0.1f;
-    private Color originalColor; 
+    private Color originalColor;
 
+    private void Awake()
+    {
+        healthBar = GetComponentInChildren<floatingHealthBar>();
+    }
 
     void Start()
     {
@@ -45,6 +52,7 @@ public class MonsterStats : MonoBehaviour
             throw new System.ArgumentOutOfRangeException("No negative damage");
         }
         this.monsterHealth -= amount;
+        healthBar.UpdateHealthBar(monsterHealth, monsterMaxHealth);
         if (monsterHealth <= 0)
         {
             ChooseBuff();
@@ -128,22 +136,28 @@ public class MonsterStats : MonoBehaviour
     public void InitVariables0()
     {
         this.monsterHealth = 1;
+        this.monsterMaxHealth = 1;
         this.monsterAttackDamage = 1;
         this.monsterSpeed = 1;
+        healthBar.UpdateHealthBar(1, 1);
     }
 
     public void InitVariables1()
     {
         this.monsterHealth = 50;
+        this.monsterMaxHealth = 50;
         this.monsterAttackDamage = 2;
         this.monsterSpeed = 3;
+        healthBar.UpdateHealthBar(50, 50);
     }
 
     public void InitVariables2()
     {
         this.monsterHealth = 80;
+        this.monsterMaxHealth = 80;
         this.monsterAttackDamage = 3;
         this.monsterSpeed = 4;
+        healthBar.UpdateHealthBar(80, 80);
     }
 
 

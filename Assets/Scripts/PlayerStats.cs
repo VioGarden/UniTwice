@@ -89,7 +89,7 @@ public class PlayerStats : MonoBehaviour
         }
         else
         {
-            checkIfStatsNeedUpdate();
+            CheckIfStatsNeedUpdate();
             hud.UpdateHealth(camoTime, health, attackDamage, speed, knockBack);
         }
     }
@@ -121,6 +121,7 @@ public class PlayerStats : MonoBehaviour
 
         playerRenderer.material.color = originalColor;
     }
+
     public void Heal(int amount)
     {
         if (amount < 0)
@@ -129,7 +130,7 @@ public class PlayerStats : MonoBehaviour
         }
         ShowFlare(true, 1, amount);
         this.health += amount;
-
+        StatsManager.Instance.globalHealth += amount;
     }
 
     // Attack Damage Functions
@@ -414,7 +415,7 @@ public class PlayerStats : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void checkIfStatsNeedUpdate()
+    private void CheckIfStatsNeedUpdate()
     {
         if ((this.camoTime != StatsManager.Instance.globalCamoTime) ||
         (this.health != StatsManager.Instance.globalHealth) ||
