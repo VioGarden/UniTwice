@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -37,6 +38,8 @@ public class PlayerStats : MonoBehaviour
 
     private Color originalColor;
 
+    public ScoreTimerManager scoreTimeManagerReferral;
+
     private void Start()
     {
         // GameObject in unity, upon launch, is set to all 0s
@@ -54,6 +57,8 @@ public class PlayerStats : MonoBehaviour
                 StatsManager.Instance.globalKnockBack = knockBack;
                 StatsManager.Instance.globalIsDead = isDead;
                 StatsManager.Instance.gameHasStarted = true;
+                StatsManager.Instance.globalTimer = 180;
+                StatsManager.Instance.globalScore = 0;
             }
 
         }
@@ -73,10 +78,14 @@ public class PlayerStats : MonoBehaviour
 
     private void Update()
     {
+        // game over conditions
+        if ((this.health <= 0) || (StatsManager.Instance.globalTimer  <= 0))
+        {
+            SceneManager.LoadScene("GameOver");
+        }
 
-        
         // If player is camo, must lower Camo time
-        if (camoCheck.isCurrentlyCamo)
+            if (camoCheck.isCurrentlyCamo)
         {
             this.camoTime -= Time.deltaTime;
             StatsManager.Instance.globalCamoTime -= Time.deltaTime;
@@ -92,6 +101,7 @@ public class PlayerStats : MonoBehaviour
             CheckIfStatsNeedUpdate();
             hud.UpdateHealth(camoTime, health, attackDamage, speed, knockBack);
         }
+        StatsManager.Instance.globalTimer -= Time.deltaTime;
     }
 
     // When player gets damaged
@@ -412,7 +422,7 @@ public class PlayerStats : MonoBehaviour
     {
         Debug.Log("Perished");
         isDead = true;
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
     private void CheckIfStatsNeedUpdate()
@@ -422,7 +432,8 @@ public class PlayerStats : MonoBehaviour
         (this.speed != StatsManager.Instance.globalSpeed) ||
         (this.attackDamage != StatsManager.Instance.globalAttackDamage) ||
         (this.knockBack != StatsManager.Instance.globalKnockBack) ||
-        (this.isDead != StatsManager.Instance.globalIsDead))
+        (this.isDead != StatsManager.Instance.globalIsDead) ||
+        (scoreTimeManagerReferral.timerValue != StatsManager.Instance.globalTimer))
         {
             ChangeOnSceneSwitch();
         }
@@ -437,5 +448,6 @@ public class PlayerStats : MonoBehaviour
         this.attackDamage = StatsManager.Instance.globalAttackDamage;
         this.knockBack = StatsManager.Instance.globalKnockBack;
         this.isDead = StatsManager.Instance.globalIsDead;
+        scoreTimeManagerReferral.timerValue = StatsManager.Instance.globalTimer;
     }
 }

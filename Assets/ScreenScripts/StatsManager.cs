@@ -18,6 +18,10 @@ public class StatsManager : MonoBehaviour
     // variable to update global stats upon game launch
     public bool gameHasStarted = false;
 
+    // variables to keep track of score and timer
+    public int globalScore;
+    public float globalTimer;
+
     private void Awake()
     {
         if (Instance != null)
