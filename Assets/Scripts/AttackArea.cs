@@ -22,5 +22,17 @@ public class AttackArea : MonoBehaviour
             MonsterStats monsterHealth = collider.GetComponent<MonsterStats>();
             monsterHealth.Damage(stats.attackDamage);
         }
+
+        else if (collider.GetComponent<GolemStats>() != null)
+        {
+            // knockback monster
+            Rigidbody2D golemRigidbody = collider.GetComponent<Rigidbody2D>();
+            Vector2 knockbackDirection = (collider.transform.position - transform.position).normalized;
+            golemRigidbody.AddForce(knockbackDirection * stats.knockBack, ForceMode2D.Impulse);
+
+            // Deal damage to monsters
+            GolemStats golemHealth = collider.GetComponent<GolemStats>();
+            golemHealth.DamageGolem(stats.attackDamage);
+        }
     }
 }

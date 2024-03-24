@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MonsterStats : MonoBehaviour
 {
-
     [SerializeField] public int monsterHealth;
     [SerializeField] public int monsterMaxHealth;
     [SerializeField] public int monsterAttackDamage;

@@ -7,16 +7,17 @@ public class GolemStats : MonoBehaviour
     [SerializeField] public int golemHealth;
     [SerializeField] public int golemMaxHealth;
     [SerializeField] public int golemAttackDamage;
+    [SerializeField] public int golemLodgeDamage;
     [SerializeField] public int golemSpeed;
 
     [SerializeField] floatingHealthBar healthBar;
 
     public PlayerStats stats;
 
-    public Renderer monsterRenderer;
+    public Renderer golemRenderer;
 
     // When damaged, flash red
-    public Color damageColor = new Color(253f, 100f, 99f);
+    public Color damageColorGolem = new Color(0.945f, 0.298f, 0.016f);
     public float damageDuration = 0.1f;
     private Color originalColor;
 
@@ -28,19 +29,9 @@ public class GolemStats : MonoBehaviour
     void Start()
     {
         InitVariablesGolem();
+        originalColor = golemRenderer.material.color;
     }
 
-    private IEnumerator FlashColor()
-    {
-        // Change the color to damage color
-        monsterRenderer.material.color = damageColor;
-
-        // Wait for a short duration
-        yield return new WaitForSeconds(damageDuration);
-
-        // Revert back to the original color
-        monsterRenderer.material.color = originalColor;
-    }
 
     public void DamageGolem(int amount)
     {
@@ -59,6 +50,18 @@ public class GolemStats : MonoBehaviour
         {
             StartCoroutine(FlashColor());
         }
+    }
+
+    private IEnumerator FlashColor()
+    {
+        // Change the color to damage color
+        golemRenderer.material.color = damageColorGolem;
+
+        // Wait for a short duration
+        yield return new WaitForSeconds(damageDuration);
+
+        // Revert back to the original color
+        golemRenderer.material.color = originalColor;
     }
 
 
@@ -121,10 +124,12 @@ public class GolemStats : MonoBehaviour
 
     public void InitVariablesGolem()
     {
-        this.golemHealth = 800;
+        this.golemHealth = 1000;
         this.golemMaxHealth = 1000;
         this.golemAttackDamage = 5;
+        this.golemLodgeDamage = 10;
         this.golemSpeed = 5;
+        healthBar.UpdateHealthBar(1000, 1000);
     }
 
     private void Die()

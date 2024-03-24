@@ -441,7 +441,6 @@ public class PlayerStats : MonoBehaviour
 
     private void ChangeOnSceneSwitch()
     {
-        Debug.Log("ChangeOnSceneSwitch");
         this.camoTime = StatsManager.Instance.globalCamoTime;
         this.health = StatsManager.Instance.globalHealth;
         this.speed = StatsManager.Instance.globalSpeed;
