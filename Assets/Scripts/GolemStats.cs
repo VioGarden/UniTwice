@@ -135,6 +135,8 @@ public class GolemStats : MonoBehaviour
     private void Die()
     {
         Debug.Log("Golem Perished");
+        StatsManager.Instance.globalMultiplier += 0.2f;
+        StatsManager.Instance.globalScore += 100f;
         Destroy(gameObject);
     }
 

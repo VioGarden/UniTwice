@@ -415,6 +415,8 @@ public class PlayerStats : MonoBehaviour
         this.knockBack = 1f;
         this.isDead = false;
         this.flareDuration = 1f;
+        StatsManager.Instance.globalScore = 0;
+        StatsManager.Instance.globalMultiplier = 1;
     }
 
 

@@ -19,7 +19,8 @@ public class StatsManager : MonoBehaviour
     public bool gameHasStarted = false;
 
     // variables to keep track of score and timer
-    public int globalScore;
+    public float globalScore;
+    public float globalMultiplier;
     public float globalTimer;
 
     private void Awake()

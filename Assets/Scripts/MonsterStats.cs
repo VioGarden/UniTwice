@@ -164,6 +164,16 @@ public class MonsterStats : MonoBehaviour
     private void Die()
     {
         Debug.Log("Monster Perished");
+        if (monsterType == 0)
+        {
+            float pointsToAdd = 10 * StatsManager.Instance.globalMultiplier;
+            StatsManager.Instance.globalScore += pointsToAdd;
+        }
+        else if (monsterType == 1)
+        {
+            float pointsToAdd = 20 * StatsManager.Instance.globalMultiplier;
+            StatsManager.Instance.globalScore += pointsToAdd;
+        }
         Destroy(gameObject);
     }
 }

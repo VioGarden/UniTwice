@@ -53,7 +53,6 @@ public class PlayerAttack : MonoBehaviour
         // Setting attack hit box to left
         if (pastX >= 0 && currX < 0)
         {
-            Debug.Log("AttackLeft");
             pastX = -1;
             Vector3 temp = new Vector3(-2.8f, 0, 0);
             BigAttackArea.transform.position += temp;
@@ -62,7 +61,6 @@ public class PlayerAttack : MonoBehaviour
         // Setting attack hit box to right
         else if (pastX <= 0 && currX > 0)
         {
-            Debug.Log("AttackRight");
             pastX = 1;
             Vector3 temp = new Vector3(2.8f, 0, 0);
             BigAttackArea.transform.position += temp;
@@ -86,7 +84,6 @@ public class PlayerAttack : MonoBehaviour
             animator.SetBool("isPunch", true);
             punchTimerRunning = true;
             punchTime = 0;
-            Debug.Log("Attacking");
             Attack();
         }
 

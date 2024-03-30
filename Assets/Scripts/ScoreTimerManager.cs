@@ -6,7 +6,6 @@ using TMPro;
 
 public class ScoreTimerManager : MonoBehaviour
 {
-    public TextMeshProUGUI scoreText;
     public TextMeshProUGUI timerText;
 
     public float timerValue;
