@@ -40,6 +40,10 @@ public class PlayerStats : MonoBehaviour
 
     public ScoreTimerManager scoreTimeManagerReferral;
 
+    public ScoreManager scoreManagerReferral;
+
+    public MultiplierManager multiplierManagerReferral;
+
     private void Start()
     {
         // GameObject in unity, upon launch, is set to all 0s
@@ -59,6 +63,7 @@ public class PlayerStats : MonoBehaviour
                 StatsManager.Instance.gameHasStarted = true;
                 StatsManager.Instance.globalTimer = 180;
                 StatsManager.Instance.globalScore = 0;
+                StatsManager.Instance.globalMultiplier = 1;
             }
 
         }
@@ -415,8 +420,8 @@ public class PlayerStats : MonoBehaviour
         this.knockBack = 1f;
         this.isDead = false;
         this.flareDuration = 1f;
-        StatsManager.Instance.globalScore = 0;
-        StatsManager.Instance.globalMultiplier = 1;
+        //StatsManager.Instance.globalScore = 0;
+        //StatsManager.Instance.globalMultiplier = 1;
     }
 
 
@@ -435,7 +440,9 @@ public class PlayerStats : MonoBehaviour
         (this.attackDamage != StatsManager.Instance.globalAttackDamage) ||
         (this.knockBack != StatsManager.Instance.globalKnockBack) ||
         (this.isDead != StatsManager.Instance.globalIsDead) ||
-        (scoreTimeManagerReferral.timerValue != StatsManager.Instance.globalTimer))
+        (scoreTimeManagerReferral.timerValue != StatsManager.Instance.globalTimer) ||
+        (scoreManagerReferral.scoreValue != StatsManager.Instance.globalScore) ||
+        (multiplierManagerReferral.multValue != StatsManager.Instance.globalMultiplier))
         {
             ChangeOnSceneSwitch();
         }
@@ -450,5 +457,7 @@ public class PlayerStats : MonoBehaviour
         this.knockBack = StatsManager.Instance.globalKnockBack;
         this.isDead = StatsManager.Instance.globalIsDead;
         scoreTimeManagerReferral.timerValue = StatsManager.Instance.globalTimer;
+        scoreManagerReferral.scoreValue = StatsManager.Instance.globalScore;
+        multiplierManagerReferral.multValue = StatsManager.Instance.globalMultiplier;
     }
 }

@@ -1035,6 +1035,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51ad9dd36acd14bad9f8c76407cbde57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &413006835 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6393411434815742595, guid: de093ed85230d41068e7be02ceed61da, type: 3}
+  m_PrefabInstance: {fileID: 413006831}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81937fe72bf8747328f0097f49248ae0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &413006836 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3317918747397175874, guid: de093ed85230d41068e7be02ceed61da, type: 3}
+  m_PrefabInstance: {fileID: 413006831}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddcdc9f33669540598e9fb77b27a20d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &421898382 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5679224379562646251, guid: be4ff1dc0274f470abe74eaa6aeb9d72, type: 3}
@@ -4651,9 +4673,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 305134103}
     - target: {fileID: 2951370668632715413, guid: be4ff1dc0274f470abe74eaa6aeb9d72, type: 3}
+      propertyPath: scoreManagerReferral
+      value: 
+      objectReference: {fileID: 413006836}
+    - target: {fileID: 2951370668632715413, guid: be4ff1dc0274f470abe74eaa6aeb9d72, type: 3}
       propertyPath: scoreTimeManagerReferral
       value: 
       objectReference: {fileID: 413006834}
+    - target: {fileID: 2951370668632715413, guid: be4ff1dc0274f470abe74eaa6aeb9d72, type: 3}
+      propertyPath: multiplierManagerReferral
+      value: 
+      objectReference: {fileID: 413006835}
     - target: {fileID: 3200264275618449909, guid: be4ff1dc0274f470abe74eaa6aeb9d72, type: 3}
       propertyPath: currentADText
       value: 
@@ -4695,9 +4725,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 305134103}
     - target: {fileID: 3924924691256899195, guid: be4ff1dc0274f470abe74eaa6aeb9d72, type: 3}
+      propertyPath: scoreManagerReferral
+      value: 
+      objectReference: {fileID: 413006836}
+    - target: {fileID: 3924924691256899195, guid: be4ff1dc0274f470abe74eaa6aeb9d72, type: 3}
       propertyPath: scoreTimeManagerReferral
       value: 
       objectReference: {fileID: 413006834}
+    - target: {fileID: 3924924691256899195, guid: be4ff1dc0274f470abe74eaa6aeb9d72, type: 3}
+      propertyPath: multiplierManagerReferral
+      value: 
+      objectReference: {fileID: 413006835}
     - target: {fileID: 3974667817683634543, guid: be4ff1dc0274f470abe74eaa6aeb9d72, type: 3}
       propertyPath: currentADText
       value: 
