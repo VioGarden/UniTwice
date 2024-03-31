@@ -19,11 +19,10 @@ public class SwitchScenes : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Collided with door");
         if (collision.gameObject.name == "Player")
         {
-
-            // Load next scene
+            string gameObjectName = gameObject.name;
+            DoorManager.Instance.SetDoor(gameObjectName);
             loadingScreen.SetActive(true);
             StartCoroutine(LoadGameAsync(sceneBuildIndex));
 
